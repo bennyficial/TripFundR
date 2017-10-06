@@ -34,11 +34,11 @@ module.exports = function(app, passport) {
         }
     ));
 
-    // app.post("/signin", passport.authenticate("local-signin", {
-    //         successRedirect: "/index",
-    //         failureRedirect: "/signin"
-    //     }
-    // ))
+    app.post("/signin", passport.authenticate("local-signin", {
+            successRedirect: "/index",
+            failureRedirect: "/signin"
+        }
+    ));
 
     
     // to protect main route
