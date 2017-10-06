@@ -31,8 +31,14 @@ app.use(express.static("public"));
 
 // Routes
 // =============================================================
+app.get('/', function(req,res){
+  res.render("index")
+});
 app.get('/profile', function(req,res){
     res.render("profile")
+});
+app.get('/create', function(req,res){
+  res.render("create")
 });
 app.get('/tripview', function(req,res){
     res.render("tripview")

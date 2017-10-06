@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FundR App</title>
+   
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/style.css">
+  </head>
+  <body>
+    <!--header-->
+    <header class="main-header" id="header">
+        <div class="bg-color">
+            <!--nav-->
+            <nav class="nav navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="col-md-12">
+                        <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mynavbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="fa fa-bars"></span>
+                        </button>
+                            <a href="http://localhost:8080/" class="navbar-brand">FundR</a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-right" id="mynavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#header">Home</a></li>
+                                <li><a href="#feature">How it Works</a></li>
+                                <li><a href="http://localhost:8080/create">Create New Trip</a></li>
+                                <li><a href="http://localhost:8080/profile">Profile</a></li>
+                                <li><a href="#portfolio">Gallery</a></li>
+                                <li><a href="#contact">Contact</a></li>
+                            </ul>
+
+                            <ul class="nav navbar-nav navbar-right">
+                                <!-- <li><p id="LoginInstructions" class="navbar-text">Already have an account?</p></li> -->
+                            <li class="dropdown">
+                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+                          <ul id="login-dp" class="dropdown-menu">
+                            <li>
+                               <div class="row">
+                                  <div class="col-md-12">
+                                  <div id="signUpAlert" class="top text-center">
+                                    Login Area
+                                  </div>
+                                     <form class="form " role="form" id="login-nav">
+                                        <div class="form-group">
+                                           <input type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
+                                        </div>
+                                        <div class="form-group">
+                                           <input type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
+                                            <div class="help-block text-right loginForm"><a>Forget the password ?</a></div>
+                                        </div>
+                                        <div class="form-group">
+                                           <button type="btnLogin" id="btnLogin" class="btn btn-primary btn-block">Log In</button>
+                                           <button type="btnLogOut" id="btnLogOut" class="btn btn-warning btn-block hide">Log Out</button> 
+                                        </div>
+                                        <div class="checkbox loginForm">
+                                           <label>
+                                           <input type="checkbox"> keep me logged-in
+                                           </label>
+                                        </div>
+                                     </form>
+                                  </div>
+                                  <div class="bottom text-center loginForm">
+                                    New here ? <button id="btnSignUp" class="btn btn-sm btn-success">Sign Up</button> 
+                                  </div>
+                               </div>
+                            </li>
+                          </ul>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+            <!--/ nav-->
+            <div class="container text-center">
+                <div class="wrapper wow fadeInUp delay-05s" >
+                    <h2 class="top-title">TRIP GO FundR</h2>
+                    <h3 class="title">FundR</h3>
+                    <h4 class="sub-title">"Go Fund Yourself!"</h4>
+                    <button type="submit" class="btn btn-submit">START YOUR FundR</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!--/ header-->
+    <!---->
+    <section id="cta-1">
+        <div class="container">
+            <div class="row">
+                <div class="cta-info text-center">
+                    <h3><span class="dec-tec">“</span>Travel well by using FundR.<span class="dec-tec">”</span> - The Blue Team</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <section id="feature" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 wow fadeInLeft delay-05s">
+                    <div class="section-title">
+                        <h2 class="head-title">How it Works</h2>
+                        <hr class="botm-line">
+                        <p class="sec-para">The best way to start planning a trip is to figure out what you need and how to fund it.</p>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <i class="fa fa-check-square-o"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">What do you need for your trip?</h3>
+                            <p class="txt-para">Set your goals for the funds or items you need for your trip. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-02s">
+                        <div class="icon">
+                            <i class="fa fa-calendar"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">When is your trip?</h3>
+                            <p class="txt-para">Set the deadline for the when the funds/items are needed for your trip. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <i class="fa fa-user-circle"></i>
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Who is going?</h3>
+                            <p class="txt-para">Send this FundR account to those participating in the trip. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-04s">
+                        <div class="icon">
+                            <i class="fa fa-dollar"></i> 
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Pledge</h3>
+                            <p class="txt-para">Have everyone participate by contributing to your list of funds or items. </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 wow fadeInRight delay-06s">
+                        <div class="icon">
+                            <i class="fa fa-plane"></i> 
+                        </div>
+                        <div class="icon-text">
+                            <h3 class="txt-tl">Go on your trip</h3>
+                            <p class="txt-para">Once your goals have been attained you, will be on your way to your destination and have fun! </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <section class="section-padding wow fadeInUp delay-02s" id="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-12">
+                    <div class="section-title">
+                        <h2 class="head-title">Recent Trip Gallery</h2>
+                        <hr class="botm-line">
+                        <p class="sec-para">Here are some photos taken by our FundR users on their recent trips.</p>
+                    </div>
+                </div>
+                <div class="col-md-9 col-sm-12">
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/lady.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/pool.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/asian.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/mountain.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/road.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6 padding-right-zero">
+                        <div class="portfolio-box design">
+                            <img src="/assets/img/boats.jpg" alt="" class="img-responsive">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <section class="section-padding wow fadeInUp delay-05s" id="contact">
+        <div class="container">
+            <div class="row white">
+                <div class="col-md-8 col-sm-12">
+                    <div class="section-title">
+                        <h2 class="head-title black">Contact Us</h2>
+                        <hr class="botm-line">
+                        <p class="sec-para black">If you have any questions or feedback, please feel free to let us know</p>
+                    </div>
+                </div>
+                <div class="col-md-12 col-sm-12">
+                    <div class="col-md-4 col-sm-6" style="padding-left:0px;">
+                        <h3 class="cont-title">Email Us</h3>
+                        <div id="sendmessage">Your message has been sent. Thank you!</div>
+                        <div id="errormessage"></div>
+                        <div class="contact-info">
+                            <form action="" method="post" role="form" class="contactForm">
+                                <div class="form-group">
+                                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                    <div class="validation"></div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" data-rule="email" data-msg="Please enter a valid email" />
+                                    <div class="validation"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                                    <div class="validation"></div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <div class="validation"></div>
+                                </div>
+                                <button type="submit" class="btn btn-send">Send</button>
+                            </form>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <h3 class="cont-title">Mail Us</h3>
+                        <div class="location-info">
+                            <p class="white"><span aria-hidden="true" class="fa fa-map-marker"></span>510 E Peltason Irvine,CA 92697</p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-phone"></span>Phone: 800-GoFundR</p>
+                            <p class="white"><span aria-hidden="true" class="fa fa-envelope"></span>Email: <a href="" class="link-dec">BlueTeam@FundR.com</a></p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="contact-icon-container hidden-md hidden-sm hidden-xs">
+                            <span aria-hidden="true" class="fa fa-envelope-o"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!---->
+    <!---->
+    <footer class="" id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-7 footer-copyright">
+                    © Fundr - 2017 All rights reserved
+                    <div class="credits">
+                     
+                        Designed by The Blue Team
+                    </div>
+                </div>
+                <div class="col-sm-5 footer-social">
+                    <div class="pull-right hidden-xs hidden-sm">
+                        <a href="#"><i class="fa fa-facebook"></i></a>
+                        <a href="#"><i class="fa fa-instagram"></i></a>
+                        <a href="#"><i class="fa fa-snapchat"></i></a>
+                        <a href="#"><i class="fa fa-github"></i></a>
+                        <a href="#"><i class="fa fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!---->
+    <!--contact ends-->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.easing.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/wow.js"></script>
+    <script src="/js/custom.js"></script>
+    <script src="/contactform/contactform.js"></script>
+    
+  </body>
+</html>

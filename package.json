@@ -27,6 +27,6 @@
     "handlebars": "^4.0.10",
     "mysql2": "^1.4.2",
     "path": "^0.12.7",
-    "sequelize": "^4.13.3"
+    "sequelize": "^4.13.5"
   }
 }
