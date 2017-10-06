@@ -21,6 +21,11 @@ module.exports = function(app, passport) {
     app.get("/signin", function (req, res) {
         res.render("signin");
     });
+    app.get('/logout', function (req, res) {
+        req.session.destroy(function (err) {
+            res.redirect("/");
+        })
+    });
 
 
     app.post("/signup", passport.authenticate("local-signup", {
