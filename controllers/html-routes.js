@@ -1,6 +1,6 @@
 module.exports = function(app, passport) {
     app.get ("/", function(req, res) {
-        res.render("index");
+        res.render("signin");
         //res.render("welcome")
     });
     app.get ("/index", isLoggedIn, function (req, res) {
@@ -46,6 +46,6 @@ module.exports = function(app, passport) {
         if(req.isAuthenticated()){
             return next();
         }
-        res.redirect('/');
+        res.redirect("/signin");
     }
 }
