@@ -1,14 +1,22 @@
 module.exports = function(sequelize, DataTypes) {
     var Users = sequelize.define("Users", {
       // Giving the Author model a name of type STRING
-      username:{
-          type:DataTypes.STRING,
-          allowNull:false,
-          validate:{
-              isAlphanumeric: true,
-              len:[5,12]
+      firstname: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+              len: [1]  // at least one character
           }
       },
+
+      lastname: {
+          type: DataTypes.STRING,
+          allowNull: false,
+          validate: {
+              len: [1] // at least one character
+          }
+      },
+
       email:{
           type:DataTypes.STRING,
           allowNull:false,
@@ -16,11 +24,12 @@ module.exports = function(sequelize, DataTypes) {
               isEmail: true
           }
       },
+
       password:{
           type:DataTypes.STRING,
           allowNull: false,
           validate: {
-              len: [5]
+              len: [5] // at least 5 char
           }
       }
     });
@@ -32,4 +41,4 @@ module.exports = function(sequelize, DataTypes) {
     };
   
     return Users;
-  };
+};
