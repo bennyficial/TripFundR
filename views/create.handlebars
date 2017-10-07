@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="/assets/css/table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +30,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+            
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -37,14 +38,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="http://localhost:8080/">FundR</a>
+                <a class="navbar-brand" href="http://localhost:8080/index">FundR</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="http://localhost:8080/">Home</a>
+                        <a href="http://localhost:8080/index">Home</a>
                     </li>
                     <li>
                         <a href="http://localhost:8080/create">Create New Trip</a>
@@ -52,9 +52,6 @@
                     <li>
                         <a href="http://localhost:8080/profile">Profile</a>
                     </li>
-                    <!-- <li>
-                        <a href="tripview.html">Trip</a>
-                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -63,8 +60,7 @@
     </nav>
 
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
-    <header class="intro-header" style="background-image: url('/assets/img/mountain.jpg')">
+    <header class="intro-header" style="background-image: url('/assets/img/road.jpg')">
         <div class="container overlay">
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
@@ -72,9 +68,7 @@
                         <h1>New FundR Trip</h1>
                         <hr class="small">
                         <span class="subheading">Create your new FundR Trip!</span>
-                        {{!-- <button type="submit" class="btn-success btn-submit"> New FundR </button> --}}
-  
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
@@ -84,6 +78,72 @@
     <div class="container">
         <div class="row">
             <!-- main tables go here -->
+            <div class="container">
+    <div class="row">
+        <h2>Creating your FundR Trip Account</h2>
+        <p class="lead">
+            Please fill out the form below with information regarding your trip <br />
+           </p>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                <h4 class="page-header">Trip Information</h4>
+                <form role="form">
+                    <div class="form-group float-label-control">
+                        <label for="">Trip Name</label> 
+                        </br >
+                        <input type="text" class="form-control" placeholder="Trip Name">
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Destination</label>
+                        </br >
+                        <input type="text" class="form-control" placeholder="Destination">
+                    </div>
+                    <div class="form-group float-label-control">
+                        <label for="">Trip Date</label>
+                        </br >
+                        <textarea class="form-control" placeholder="Trip Date" rows="1"></textarea>
+                    </div>
+
+                     <div class="form-group float-label-control">
+                        <label for="">FundR Goal Date</label>
+                        </br >
+                        <textarea class="form-control" placeholder="Fundr Goal Date" rows="1"></textarea>
+                    </div>
+                    <div class="form-group float-label-control label-bottom">
+                        <label for="">Trip Description</label>
+                        </br >
+                        <textarea type="text" class="form-control" rows="5" placeholder="Describe your Trip"></textarea>
+                    </div>
+                </form>
+
+
+                 <button type="submit" class="btn-success btn-submit"> Create FundR </button>
+
+            </div>
+            <div class="col-sm-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            Create your FundR
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <ul>
+                            <li> - Here you will create your Trip FundR account</li>
+                            <li> - Set your trip details in the form</li>
+                            <li> - Give a description for your trip</li>
+                          
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 
@@ -111,6 +171,8 @@
 
     <!-- Smooth Scroll -->
     <script src="../js/SmoothScroll.js"></script>
+      <script src="js/wow.js"></script>
+
 
 </body>
 
