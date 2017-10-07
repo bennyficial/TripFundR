@@ -1,5 +1,6 @@
 var db = require('../models');
 
+
 module.exports = function(app){
     // CREATES OR FIND A NEW USER
     app.post('/api/user/new',function(req,res){

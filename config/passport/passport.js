@@ -19,7 +19,7 @@ module.exports = function (passport, users) {
         Users.findById(id).then(function(users){
             if(users) {
                 //return sequelize model if successful
-                done(null, users.get());
+                done(null, users);
             } else {
                 done(users.errors, null);
             }
@@ -103,6 +103,11 @@ module.exports = function (passport, users) {
                 }
 
                 var userinfo = users.get();
+                // console.log("USERINFO=============")
+                // console.log(userinfo);
+                // userId = {
+                //     id: userinfo.id
+                // }
                 return done(null, userinfo);
 
             }).catch(function(err) {
@@ -112,3 +117,4 @@ module.exports = function (passport, users) {
         }
     ));
 }
+

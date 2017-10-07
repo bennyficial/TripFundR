@@ -33,7 +33,7 @@
         
     });
 
-  //   //Login fields
+    //Login fields
   //   var btnLogin = $('#btnLogin');
   //   var btnSignUp = $('#btnSignUp');
   //   var btnLogOut = $('#btnLogOut');

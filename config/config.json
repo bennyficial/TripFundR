@@ -2,7 +2,6 @@
   "development": {
     "username": "root",
     "password": "root",
-    "port": "8889",
     "database": "fundr",
     "host": "localhost",
     "dialect": "mysql"
