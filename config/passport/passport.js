@@ -26,7 +26,7 @@ module.exports = function (passport, users) {
         })
     })
 
-    //define localstrategy for signup
+    //define localstrategy for SIGNUP
     passport.use("local-signup", new LocalStrategy (
         {
             usernameField: "email",
@@ -72,6 +72,43 @@ module.exports = function (passport, users) {
                     })
                 }
             });
+        }
+    ));
+
+    //define local strategy for SIGNIN
+    passport.use("local-signin", new LocalStrategy (
+        {
+            usernameField: "email",
+            passwordField: "password",
+            passReqToCallback: true
+        },
+
+        function (req, email, password, done) {
+            var Users = users;
+            var isValidPassword = function (userpass, password) {
+                return bCrypt.compareSync(password, userpass);
+            }
+
+            Users.findOne({
+                where: {
+                    email: email
+                }
+            }).then(function (users) {
+                if (!users) {
+                    console.log("email does not exist")
+                    return done(null, false, {message: "Email does not exist"});
+                } else if (!isValidPassword(users.password, password)) {
+                    console.log("incorrect pass")
+                    return done(null, false, {message: "Incorrect Password"})
+                }
+
+                var userinfo = users.get();
+                return done(null, userinfo);
+
+            }).catch(function(err) {
+                console.log("Error: ", err);
+                return done(null, false, {message: "Something went wrong with your Signin"})
+            })
         }
     ));
 }
