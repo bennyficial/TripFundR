@@ -37,7 +37,7 @@ module.exports = function(sequelize, DataTypes) {
     Users.associate = function(models) {
       // Associating Author with Posts
       // When an Author is deleted, also delete any associated Posts
-      Users.belongsToMany(models.Trip, {through: "UsersTrip"});
+      Users.belongsToMany(models.Trip, {through: "UsersTrip",foreignKey: "UsersId"});
     };
   
     return Users;

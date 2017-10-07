@@ -1,6 +1,25 @@
+var db = require("../models");
 module.exports = function(app, passport) {
+
+        app.get('/profile/api/user/:user_id', (req,res) => {
+            var user_id = req.params.user_id;
+            db.Users.findOne({
+                where: {id:user_id}
+            }).then(dbUser => {
+                console.log(dbUser);
+                dbUser.getTrips().then(dbTripUser => {
+                    console.log(dbTripUser);
+                    var returnData = {
+                        trips : dbTripUser
+                    }
+                    res.render('profile',returnData)
+                })
+            })       
+        })
+    
+    
     app.get ("/", function(req, res) {
-        res.render("signin");
+        res.render("intro");
         //res.render("welcome")
     });
     app.get ("/index", isLoggedIn, function (req, res) {
@@ -13,7 +32,7 @@ module.exports = function(app, passport) {
         res.render("create");
     });
     app.get("/tripview", function(req, res) {
-        res.render()
+        res.render("tripview")
     });
     app.get("/signup", function (req, res) {
         res.render("signup");

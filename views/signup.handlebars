@@ -1,11 +1,99 @@
 <!DOCTYPE html>
-<html>
- 
+<html lang="en">
+
 <head>
-    <title></title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>FundR User Signup</title>
+
+    <!-- Bootstrap Core CSS -->
+<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="assets/css/table.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    
+    <link href='https://fonts.googleapis.com/css?family=Lato:400,700,300|Open+Sans:400,600,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Custom Fonts -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+  <script src="js/jquery.js"></script>
 </head>
- 
+
 <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+               
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- <li>
+                        <a href="tripview.html">Trip</a>
+                    </li> -->
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Header -->
+    <!-- Set your background image for this header on the line below. -->
+    <header class="intro-header" style="background-image: url('/assets/img/passport.jpg')">
+        <div class="container overlay">
+            <div class="row">
+                <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
+                    <div class="page-heading">
+                        <h1>FundR User Signup</h1>
+                        <hr class="small">
+                        <span class="subheading">Create your new FundR User Account!</span>
+                        {{!-- <button type="submit" class="btn-success btn-submit"> New FundR </button> --}}
+  
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="row">
+            <div class="container">
+    <div class="row">
+        <h2>Creating your FundR User Account</h2>
+        <p class="lead">
+            Please fill out the form below <br />
+           </p>
+
+        <hr/>
+
+        <div class="row">
+            <div class="col-sm-8">
+
+                <h4 class="page-header">New User Information</h4>
     <form id="signup" name="signup" method="post" action="/signup">
         <label for="email">Email Address</label>
         <input class="text" name="email" type="email" />
@@ -17,7 +105,56 @@
         <input name="password" type="password" />
         <input class="btn" type="submit" value="Sign Up" />
     </form>
- 
+
+
+                 {{!-- <button type="submit" class="btn-success btn-submit"> Create FundR Account </button> --}}
+
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+
+    <hr>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+               
+                    <p class="copyright text-muted">&copy; 2017 <a href="#">FundR</a>
+                        We <i class="fa fa-heart"></i> <a href="#">FundR</a></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+  
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    {{!-- <script src="js/small-business.min.js"></script> --}}
+
+      <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    {{!-- <script src="js/wow.js"></script> --}}
+    {{!-- <script src="js/custom.js"></script> --}}
+   
+    <!-- jQuery -->
+    {{!-- <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/small-business.min.js"></script>
+
+    <!-- Smooth Scroll -->
+    <script src="js/SmoothScroll.js"></script> --}}
+    
+
 </body>
- 
+
 </html>

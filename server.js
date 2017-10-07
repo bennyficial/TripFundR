@@ -17,7 +17,10 @@ var PORT = process.env.PORT || 8080;
 
 var exphbs = require("express-handlebars");
 
-app.engine("handlebars", exphbs({ defaultLayout: "main"}));
+app.set("views", "./views")
+app.engine("handlebars", exphbs({ 
+  extname: ".handlebars"
+}));
 app.set("view engine","handlebars");
 
 // Requiring our models for syncing
@@ -43,6 +46,9 @@ require('./config/passport/passport.js')(passport, db.Users);
 // Routes
 // =============================================================
 require("./controllers/html-routes.js")(app, passport);
+require("./controllers/trip-api-routes.js")(app, passport);
+require("./controllers/users-api-routes.js")(app, passport);
+require("./controllers/inventory-api-routes.js")(app, passport);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
