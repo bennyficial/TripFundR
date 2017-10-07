@@ -35,6 +35,15 @@
                                 <li><a href="#contact">Contact</a></li>
                             </ul> --}}
 
+                                {{!-- <form id="signin" name="signin" method="post" action="signin">
+        <label for="email">Email Address</label>
+        <input class="text" name="email" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <input class="btn" type="submit" value="Sign In" />
+    </form> --}}
+ 
+
                             <ul class="nav navbar-nav navbar-right">
                                 <!-- <li><p id="LoginInstructions" class="navbar-text">Already have an account?</p></li> -->
                             <li class="dropdown">
@@ -46,12 +55,12 @@
                                   <div id="signUpAlert" class="top text-center">
                                     Login Area
                                   </div>
-                                     <form class="form " role="form" id="login-nav">
+                                     <form method="post" action="signin" class="form " role="form" id="login-nav">
                                         <div class="form-group">
-                                           <input type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
+                                           <input name="email" type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
                                         </div>
                                         <div class="form-group">
-                                           <input type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
+                                           <input name="password" type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
                                             {{!-- <div class="help-block text-right loginForm"><a>Forget the password ?</a></div> --}}
                                         </div>
                                         <div class="form-group">
@@ -197,7 +206,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/wow.js"></script>
     <script src="js/custom.js"></script>
-    <script src="js/contactform.js"></script>
+    {{!-- <script src="js/contactform.js"></script> --}}
+
+    <script type="text/javascript">
+        var btnSignUp = $("#btnSignUp");
+
+        btnSignUp.bind("click", function(event) {
+            event.preventDefault();
+            window.location.href = "http://localhost:8080/signup";
+        })
+    </script>
     
   </body>
 </html>

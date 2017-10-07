@@ -1,19 +1,28 @@
 var db = require("../models");
 module.exports = function(app, passport) {
 
-        app.get('/profile/api/user/:user_id', (req,res) => {
+        app.get('/profile/api/user/', (req,res) => {
             var user_id = req.params.user_id;
-            db.Users.findOne({
-                where: {id:user_id}
-            }).then(dbUser => {
-                console.log(dbUser);
-                dbUser.getTrips().then(dbTripUser => {
-                    console.log(dbTripUser);
-                    var returnData = {
-                        trips : dbTripUser
-                    }
-                    res.render('profile',returnData)
-                })
+            // db.Users.findOne({
+            //     where: {id:user_id}
+            // }).then(dbUser => {
+            //     console.log(dbUser);
+            //     dbUser.getTrips().then(dbTripUser => {
+            //         console.log(dbTripUser);
+            //         var returnData = {
+            //             trips : dbTripUser
+            //         }
+            //         res.render('profile',returnData)
+            //     })
+            // })
+            var user = req.user;
+            console.log(user);
+            user.getTrips().then(dbTripUser => {
+                console.log(dbTripUser);
+                var returnData = {
+                    trips: dbTripUser
+                }
+                res.render('profile', returnData);
             })       
         })
     
@@ -21,6 +30,9 @@ module.exports = function(app, passport) {
     app.get ("/", function(req, res) {
         res.render("intro");
         //res.render("welcome")
+    });
+    app.get ("/intro", function(req, res) {
+        res.render("intro");
     });
     app.get ("/index", isLoggedIn, function (req, res) {
         res.render("index");
@@ -37,9 +49,6 @@ module.exports = function(app, passport) {
     app.get("/signup", function (req, res) {
         res.render("signup");
     });
-    app.get("/signin", function (req, res) {
-        res.render("signin");
-    });
     app.get('/logout', function (req, res) {
         req.session.destroy(function (err) {
             res.redirect("/");
@@ -55,7 +64,7 @@ module.exports = function(app, passport) {
 
     app.post("/signin", passport.authenticate("local-signin", {
             successRedirect: "/index",
-            failureRedirect: "/signin"
+            failureRedirect: "/"
         }
     ));
 
@@ -65,6 +74,6 @@ module.exports = function(app, passport) {
         if(req.isAuthenticated()){
             return next();
         }
-        res.redirect("/signin");
+        res.redirect("/");
     }
 }
