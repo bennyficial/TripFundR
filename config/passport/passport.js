@@ -102,7 +102,7 @@ module.exports = function (passport, users) {
                     return done(null, false, {message: "Incorrect Password"})
                 }
 
-                var userinfo = users.get();
+                var userinfo = users.get(); 
                 // console.log("USERINFO=============")
                 // console.log(userinfo);
                 // userId = {
