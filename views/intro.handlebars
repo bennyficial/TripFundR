@@ -80,7 +80,9 @@
                     <h3 class="title">FundR</h3>
                     <h4 class="sub-title">"Go Fund Yourself!"</h4>
                     <h2> Login or Sign-up to start using FundR </h2>
-                   
+                    {{#if error}}
+                        <div class="alert alert-danger">{{error}}</div>
+                    {{/if}}
                 </div>
             </div>
         </div>
