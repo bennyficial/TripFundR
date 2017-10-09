@@ -5,7 +5,10 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false,
           validate: {
-              len: [1]  // at least one character
+              len: {
+                  args: 1,
+                  msg: "First Name must be at least 1 character."
+              }
           }
       },
 
@@ -13,7 +16,10 @@ module.exports = function(sequelize, DataTypes) {
           type: DataTypes.STRING,
           allowNull: false,
           validate: {
-              len: [1] // at least one character
+              len: {
+                  args: 1,
+                  msg: "Last Name must be at least 1 character"
+              }
           }
       },
 
@@ -21,16 +27,16 @@ module.exports = function(sequelize, DataTypes) {
           type:DataTypes.STRING,
           allowNull:false,
           validate:{
-              isEmail: true
+              isEmail: {
+                  args: true,
+                  msg: "The email you entered is invalid"
+              }
           }
       },
 
       password:{
           type:DataTypes.STRING,
-          allowNull: false,
-          validate: {
-              len: [5] // at least 5 char
-          }
+          allowNull: false
       }
     });
   

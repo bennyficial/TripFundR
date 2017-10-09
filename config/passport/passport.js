@@ -67,8 +67,11 @@ module.exports = function (passport, users) {
                             return done(null, newUser);
                         }
                     }).catch(function (err) {
-                        console.log("Error: ", err[0].message);
-                        return done(null, false, req.flash("error", "Something went wrong with signup"));
+                        var errorMsg = err.message;
+                        // Find all "Validation Error:" from err.message and replace with " "
+                        var modifiedErrorMsg = errorMsg.replace(new RegExp("Validation error:", "g"), " ");
+                        console.log("Error: ", modifiedErrorMsg);
+                        return done(null, false, req.flash("error", modifiedErrorMsg));
                     })
                 }
             });
@@ -103,11 +106,6 @@ module.exports = function (passport, users) {
                 }
 
                 var userinfo = users.get(); 
-                // console.log("USERINFO=============")
-                // console.log(userinfo);
-                // userId = {
-                //     id: userinfo.id
-                // }
                 return done(null, userinfo);
 
             }).catch(function(err) {
