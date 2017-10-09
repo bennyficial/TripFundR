@@ -49,7 +49,7 @@ module.exports = function (passport, users) {
             }).then(function (users) {
                 if (users) {
                     console.log("That email is already taken");
-                    return done(null, false, {message: "That email is already taken"});
+                    return done(null, false, req.flash("error", "That email is already taken"));
                 } else {
                     var userPassword = generateHash(password);
                     var data = {
@@ -68,7 +68,7 @@ module.exports = function (passport, users) {
                         }
                     }).catch(function (err) {
                         console.log("Error: ", err[0].message);
-                        return done(null, false, {message: "Something went wrong with signup"});
+                        return done(null, false, req.flash("error", "Something went wrong with signup"));
                     })
                 }
             });
@@ -96,10 +96,10 @@ module.exports = function (passport, users) {
             }).then(function (users) {
                 if (!users) {
                     console.log("email does not exist")
-                    return done(null, false, {message: "Email does not exist"});
+                    return done(null, false, req.flash("error", "Email does not exist"));
                 } else if (!isValidPassword(users.password, password)) {
                     console.log("incorrect pass")
-                    return done(null, false, {message: "Incorrect Password"})
+                    return done(null, false, req.flash("error", "Incorrect Password"));
                 }
 
                 var userinfo = users.get(); 
@@ -112,7 +112,7 @@ module.exports = function (passport, users) {
 
             }).catch(function(err) {
                 console.log("Error: ", err);
-                return done(null, false, {message: "Something went wrong with your Signin"})
+                return done(null, false, req.flash("error", "Something went wrong with your Signin"));
             })
         }
     ));
