@@ -91,37 +91,38 @@
             <div class="col-sm-8">
 
                 <h4 class="page-header">Trip Information</h4>
-                <form role="form">
+
+                 <form id="create" name="create" method="post" action="/api/trip/new" role="form">
+             
                     <div class="form-group float-label-control">
                         <label for="">Trip Name</label> 
                         </br >
-                        <input type="text" class="form-control" placeholder="Trip Name">
+                        <input type="text" name="title" class="form-control" placeholder="Trip Name">
                     </div>
                     <div class="form-group float-label-control">
                         <label for="">Destination</label>
                         </br >
-                        <input type="text" class="form-control" placeholder="Destination">
+                        <input type="text" name="destination" class="form-control" placeholder="Destination">
                     </div>
                     <div class="form-group float-label-control">
                         <label for="">Trip Date</label>
                         </br >
-                        <textarea class="form-control" placeholder="Trip Date" rows="1"></textarea>
-                    </div>
-
-                     <div class="form-group float-label-control">
-                        <label for="">FundR Goal Date</label>
-                        </br >
-                        <textarea class="form-control" placeholder="Fundr Goal Date" rows="1"></textarea>
+                        <input class="form-control" name="date" type = "date" laceholder="Trip Date" rows="1"></input>
                     </div>
                     <div class="form-group float-label-control label-bottom">
                         <label for="">Trip Description</label>
                         </br >
-                        <textarea type="text" class="form-control" rows="5" placeholder="Describe your Trip"></textarea>
+                        <input type="text" name="description" class="form-control" rows="5" placeholder="Describe your Trip"></input>
                     </div>
+                                         <div class="form-group float-label-control">
+                        <label for="">Sitekey</label>
+                        </br >
+                        <input type = "text" name="sitekey" class="form-control" placeholder="Fundr Goal Date" rows="1"></input>
+                    </div>
+                    <input class="btn-success btn-submit" type="submit" value="Create FundR" />
                 </form>
 
-
-                 <button type="submit" class="btn-success btn-submit"> Create FundR </button>
+                 
 
             </div>
             <div class="col-sm-4">
@@ -161,13 +162,15 @@
     </footer>
 
     <!-- jQuery -->
-    <script src="../js/jquery.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.easing.min.js"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="../js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    <script src="../js/small-business.min.js"></script>
+    {{!-- <script src="../js/small-business.min.js"></script> --}}
 
     <!-- Smooth Scroll -->
     <script src="../js/SmoothScroll.js"></script>
