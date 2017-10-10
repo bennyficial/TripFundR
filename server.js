@@ -49,6 +49,7 @@ require("./controllers/html-routes.js")(app, passport);
 require("./controllers/trip-api-routes.js")(app, passport);
 require("./controllers/users-api-routes.js")(app, passport);
 require("./controllers/inventory-api-routes.js")(app, passport);
+require("./controllers/contacts-api-routes.js")(app, passport);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
