@@ -8,13 +8,13 @@ Set up web servers with Node.js using Express.
 * **#**
 
 ## Home Page
-![FundR Home Page](/img-readme/homepage.png?raw=true)
+![FundR Home Page](public/assets/img/homepage.jpg)
 
 ## FundR Profile Page
-![New Trip Page](/img-readme/profile.png?rqw=true)
+![New Trip Page](public/assets/img/profile.jpg)
 
 ## FundR Trip Page
-![New Trip Page](/img-readme/tripview.png?rqw=true)
+![New Trip Page](public/assets/img/tripview.jpg)
 
 
 ## Technologies Used
