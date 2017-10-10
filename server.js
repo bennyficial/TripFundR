@@ -9,6 +9,7 @@ var bodyParser = require("body-parser");
 var passport   = require('passport');
 var session    = require('express-session');
 var env = require('dotenv').load();
+var flash = require("connect-flash");
 
 // Sets up the Express App
 // =============================================================
@@ -34,6 +35,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 
 // Static directory
 app.use(express.static("public"));
+
+// Flash
+app.use(flash());
 
 // For Passport
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret

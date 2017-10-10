@@ -58,7 +58,9 @@
            </p>
 
         <hr/>
-
+        {{#if error}}
+            <div class="alert alert-danger">{{error}}</div>
+        {{/if}}
         <div class="row">
             <div class="col-sm-8">
 
