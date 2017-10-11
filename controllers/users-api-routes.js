@@ -32,7 +32,6 @@ module.exports = function(app){
         db.Users.findOne({
             where: req.body
         }).then(dbUser => {
-            console.log(dbUser)
             if(!dbUser){
                 res.json({
                     error:true,

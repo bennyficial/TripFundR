@@ -4,9 +4,6 @@ module.exports = function(app){
     // NEW TRIP
     app.post('/api/contact/new',function(req,res){
         var new_contact = req.body;
-        console.log("========================================");
-        console.log(new_contact);
-        console.log("========================================");
         db.Contact.create(new_contact).then(data =>{
             var id = data.id;
             db.Contact.findOne({

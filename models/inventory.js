@@ -25,7 +25,15 @@ module.exports = function(sequelize, DataTypes) {
                 min: 0,
                 max: 10000
             }
+        },
+        isDone: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false
+        },
+        contributorName: {
+            type: DataTypes.STRING
         }
+
     });
 
     Inventory.associate = function(models) {

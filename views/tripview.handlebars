@@ -44,20 +44,20 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">FundR</a>
+                <a class="navbar-brand" href="/index">FundR</a>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="http://localhost:8080/index">Home</a>
+                        <a href="/index">Home</a>
                     </li>
                     <li>
-                        <a href="http://localhost:8080/create">Create New Trip</a>
+                        <a href="/create">Create New Trip</a>
                     </li>
                     <li>
-                        <a href="http://localhost:8080/profile">Profile</a>
+                        <a href="/profile/">Profile</a>
                     </li>
                 
                 </ul>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="col-sm-5 text-muted">
                                 <h5> Created on: {{tripInfo.createdAt}}
-                                <h5> By: (creator name will go here) </h5>
+                                <h5> By: {{tripInfo.createdBy}} </h5>
                             </div>
                         </div>
                     </div>
@@ -149,7 +149,6 @@
                         <th> Item name </th>
                         <th> Total Quantity </th>
                         <th> Price </th>
-                        <th> Quantity Still Needed </th>                        
                         <th> Contribute </th>
 
                     </tr>
@@ -159,9 +158,12 @@
                     <tr>
                         <td> {{this.item_name}} </td>
                         <td> {{this.quantity_needed}} </td>
-                        <td> {{this.price}} </td> 
-                        <td> -- </td>                                                  
-                        <td> <button data-item="{{this.id}}" class="btn-warning btn-xs">I'll Bring This!</button> </td>                        
+                        <td> {{this.price}} </td>
+                        {{#if this.isDone}}
+                            <td><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> {{this.contributorName}}</td>
+                        {{else}}
+                            <td> <button data-item="{{this.id}}" class="btn-warning btn-xs" id="bringButton">I'll Bring This!</button> </td>
+                        {{/if}}
                     </tr>
                     {{/each}}                                                                                             
                 </tbody>       
@@ -170,20 +172,20 @@
         <div class="row">
             <h3> Add an item for this trip </h3>
             <hr>
-            <form class="form-inline">
+            <form class="form-inline" id="addInventory" name="addInventory" method="post" action="/api/trip/inventory/new/{{tripInfo.id}}">
                 <div class="form-group">
                 <label for="item_name"><h4>Item name:</h4></label>
                 <input type="text" class="form-control" id="item_name" placeholder="e.g. Case of water" name="item_name">
                 </div>
                 <div class="form-group">
                 <label for="quantity"><h4>Quantity</h4></label>
-                <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity">
+                <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity_needed">
                 </div>      
                 <div class="form-group">
                 <label for="price"><h4>Price($)(Optional)</h4></label>
                 <input type="number" min="0" step=".01" class="form-control" id="price"  name="price">
                 </div>                                   
-                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="submit" class="btn btn-primary btn-md" id="addInventoryButton">Add!</button>
             </form>
         </div>            
     </div>
