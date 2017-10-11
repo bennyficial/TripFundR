@@ -1,6 +1,6 @@
 $(document).ready(function(){
     $("#InviteButton").on("click",handleInviteForm);
-    $("#Add")
+
 
 
 
