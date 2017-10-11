@@ -81,6 +81,37 @@
     <div class="container">
         <div class="row">
             <!-- main tables go here -->
+            <div class="container">
+  <table class="responsive-table">
+    <caption>Trip Inventory Data</caption>
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Item Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Quantity Needed</th>
+        <th scope="col">Created At</th>
+        <th scope="col">Updated At</th>
+        <th scope="col">Trip ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+			  {{#each trips}}
+                <th scope="row">{{this.item_name}} </th>
+			    <td>
+			        {{this.price}}
+                    {{this.quantity_needed}}
+                    {{this.createdAt}}	
+                    {{this.updatedAt}}
+                    {{this.Tripid}}								
+	           </td>
+			   {{/each}}
+        
+      </tr>
+    </tbody>
+  </table>
+</div>
         </div>
     </div>
 

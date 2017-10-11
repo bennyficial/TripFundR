@@ -82,8 +82,15 @@
 
 			<br>
 			<h2>Your FundR trips</h2>
-
-			<ul>
+            {{#each trips}}
+                <th scope="row">{{this.title}} </th>
+			    <td>
+			        {{this.destination}}
+                    {{this.quantity_needed}}
+                    {{this.date}}								
+	           </td>
+			   {{/each}}
+			{{!-- <ul>
 			  {{#each trips}}
 			    <li>
 			        {{this.title}}
@@ -91,7 +98,7 @@
                     {{this.date}}						
 	           </li>
 			   {{/each}}
-			</ul>
+			</ul> --}}
 
 	    </div>
         </div>
