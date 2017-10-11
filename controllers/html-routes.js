@@ -1,7 +1,7 @@
 var db = require("../models");
 module.exports = function(app, passport) {
     // USER PROFILES DISPLAY CURRENT TRIPS
-    app.get('/profile/api/user/', (req,res) => {
+    app.get('/profile/', (req,res) => {
         console.log("=======================")        
         console.log(req.user);
         console.log("=======================")        
@@ -37,6 +37,7 @@ module.exports = function(app, passport) {
             })
         })
     })
+
     
     
     app.get ("/", function(req, res) {

@@ -15,7 +15,7 @@ module.exports = function(app){
                     var returnData = {
                         tripInfo: dbTrip
                     };
-                    res.render("tripview",returnData);
+                    res.json(returnData);
                 })
             )
 
