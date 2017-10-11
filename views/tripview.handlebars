@@ -149,7 +149,6 @@
                         <th> Item name </th>
                         <th> Total Quantity </th>
                         <th> Price </th>
-                        <th> Quantity Still Needed </th>                        
                         <th> Contribute </th>
 
                     </tr>
@@ -160,8 +159,7 @@
                         <td> {{this.item_name}} </td>
                         <td> {{this.quantity_needed}} </td>
                         <td> {{this.price}} </td> 
-                        <td> -- </td>                                                  
-                        <td> <button data-item="{{this.id}}" class="btn-warning btn-xs">I'll Bring This!</button> </td>                        
+                        <td> <button data-item="{{this.id}}" class="btn-warning btn-xs" id="bringButton">I'll Bring This!</button> </td>                        
                     </tr>
                     {{/each}}                                                                                             
                 </tbody>       
@@ -170,20 +168,20 @@
         <div class="row">
             <h3> Add an item for this trip </h3>
             <hr>
-            <form class="form-inline">
+            <form class="form-inline" id="addInventory" name="addInventory" method="post" action="/api/trip/inventory/new/{{tripInfo.id}}">
                 <div class="form-group">
                 <label for="item_name"><h4>Item name:</h4></label>
                 <input type="text" class="form-control" id="item_name" placeholder="e.g. Case of water" name="item_name">
                 </div>
                 <div class="form-group">
                 <label for="quantity"><h4>Quantity</h4></label>
-                <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity">
+                <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity_needed">
                 </div>      
                 <div class="form-group">
                 <label for="price"><h4>Price($)(Optional)</h4></label>
                 <input type="number" min="0" step=".01" class="form-control" id="price"  name="price">
                 </div>                                   
-                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <button type="submit" class="btn btn-primary btn-md" id="addInventoryButton">Add!</button>
             </form>
         </div>            
     </div>

@@ -28,7 +28,6 @@ module.exports = function(app){
                     });
                 })
             )
-
         })
     });
 

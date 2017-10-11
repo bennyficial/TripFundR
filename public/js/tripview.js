@@ -1,16 +1,10 @@
 $(document).ready(function(){
     $("#InviteButton").on("click",handleInviteForm);
-    $("#Add")
-
-
-
-
+    $("#bringButton").on("click", handleBringButton);
 
     function handleInviteForm(event){
         event.preventDefault();
-        console.log("this");
         var emailInput = $("#email").val().trim()
-        console.log(emailInput);
         if (!emailInput){
             return
         } else{
@@ -19,7 +13,6 @@ $(document).ready(function(){
             var urlSplit = url.split("/")
             var tripId = urlSplit[urlSplit.length - 1];
             $.post("/api/trip/addtrip/" + tripId,requestData, function(res){
-                console.log(res);
                 if(res.error){
                     $("#EmailMessage").text(res.message)
                 } else{
@@ -27,6 +20,25 @@ $(document).ready(function(){
                 }
             })        
         }
-        
     }
-})
+
+    function handleBringButton (event) {
+        event.preventDefault();
+        console.log("gg");
+        var invId = $(this).attr("data-item");
+        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
+        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
+        console.log(invId);
+        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
+        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
+        $.ajax({
+            url: "/api/trip/inventory/update/" + invId,
+            method: 'PUT'
+        }).done(function(res) {
+            var url = window.location.href;
+            var urlSplit = url.split("/")
+            var tripId = urlSplit[urlSplit.length - 1];
+            location.replace("/api/trip/" + tripId);
+        });
+    }
+});
