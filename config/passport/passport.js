@@ -19,7 +19,7 @@ module.exports = function (passport, users) {
         Users.findById(id).then(function(users){
             if(users) {
                 //return sequelize model if successful
-                done(null, users.get());
+                done(null, users);
             } else {
                 done(users.errors, null);
             }

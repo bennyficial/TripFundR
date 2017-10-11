@@ -12,16 +12,22 @@
     <title>FundR Trip Data</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+
 
     <!-- Custom CSS -->
-    <link href="/assets/css/table.css" rel="stylesheet">
+    <link href="/assets/css/tripview.css" rel="stylesheet">
+    <link href="/assets/css/style.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+   
 </head>
 
 <body>
@@ -50,7 +56,7 @@
                         <a href="create.html">Create New Trip</a>
                     </li>
                     <li>
-                        <a href="http://localhost:8080/profile">Profile</a>
+                        <a href="http://localhost:8080/profile/api/user/">Profile</a>
                     </li>
                     <!-- <li>
                         <a href="tripview.html">Trip</a>
@@ -69,7 +75,7 @@
             <div class="row">
                 <div class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2">
                     <div class="page-heading">
-                        <h1>FundR Trip Data</h1>
+                        <h1>{{tripInfo.title}}</h1>
                         <hr class="small">
                         <span class="subheading">Information regarding your trip</span>
                     </div>
@@ -79,11 +85,200 @@
     </header>
 
     <!-- Main Content -->
+
     <div class="container">
         <div class="row">
-            <!-- main tables go here -->
+            <div class="col-xs-7">
+                <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <div class="row">
+                            <div class="col-sm-7">
+                            <h3>Location: {{tripInfo.destination}}</h3>
+                            <h3>Trip Date: {{tripInfo.date}} </h3>
+                            </div>
+                            <div class="col-sm-5 text-muted">
+                                <h5> Created on: {{tripInfo.createdAt}}
+                                <h5> By: (creator name will go here) </h5>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#Description">Description</a></li>
+                            <li><a data-toggle="tab" href="#Invite">Guests</a></li>
+                        </ul>  
+                        <div class="tab-content">
+                            <div id="Description" class="tab-pane fade in active">
+                                {{tripInfo.description}}
+                            </div>
+                            <div id="Invite" class="tab-pane fade">
+                                <ol>
+                                    {{#each guests}}
+                                    <li> {{this.firstname}} {{this.lastname}} </li>
+                                    {{/each}}
+                                </ol>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-offset-1 col-xs-4">
+                <div class="row">
+                    <div class="panel panel-warning">
+                        <div class="panel-heading">
+                            Invite people to this trip!
+                        </div>
+                        <div class="panel-body">
+                            <form id="AddInvite">
+                                <div class="form-group">
+                                <label for="email"><h4>Email:</h4></label>
+                                <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                                </div>
+                            </form>    
+                            <button type="button" id="InviteButton" class="btn btn-success btn-md">Invite</button>
+                            <div id="EmailMessage"></div>                                        
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        {{!-- <div class="row"> --}}
+            <div class="row">
+                <table class="table table-condensed table-striped">
+                    <thead>
+                        <tr class="warning">
+                            <th> Item name </th>
+                            <th> Total Quantity </th>
+                            <th> Price </th>
+                            <th> Quantity Still Needed </th>                        
+                            <th> Contribute </th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each items}}
+                        <tr>
+                            <td> {{this.item_name}} </td>
+                            <td> {{this.quantity_needed}} </td>
+                            <td> {{this.price}} </td> 
+                            <td> -- </td>                                                  
+                            <td> <button data-item="{{this.id}}" class="btn-warning btn-xs">I'll Bring This!</button> </td>                        
+                        </tr>
+                        {{/each}}                                                                                             
+                    </tbody>       
+                </table>   
+            </div>
+            <div class="row">
+                <h3> Add an item for this trip </h3>
+                <hr>
+                <form class="form-inline">
+                    <div class="form-group">
+                    <label for="item_name"><h4>Item name:</h4></label>
+                    <input type="text" class="form-control" id="item_name" placeholder="e.g. Case of water" name="item_name">
+                    </div>
+                    <div class="form-group">
+                    <label for="quantity"><h4>Quantity</h4></label>
+                    <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity">
+                    </div>      
+                    <div class="form-group">
+                    <label for="price"><h4>Price($)(Optional)</h4></label>
+                    <input type="number" min="0" step=".01" class="form-control" id="price"  name="price">
+                    </div>                                   
+                    <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                </form>
+            </div>            
+        {{!-- </div> --}}
     </div>
+
+    {{!-- <div class="container">
+        <div class="row">
+            <div class="col-xs-7">
+                <div class="row">
+                    <h3>Location: {{tripInfo.destination}}
+                    <h3>Trip date: {{tripInfo.date}}</h3>
+                    <hr>
+                </div>
+                <div class="row">
+                    <ul class="nav nav-pills">
+                        <li class="active"><a data-toggle="pill" href="#Description">Description</a></li>
+                        <li><a data-toggle="pill" href="#Invite">Guests</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="Description" class="tab-pane fade in active">
+                            {{tripInfo.description}}
+                        </div>
+                        <div id="Invite" class="tab-pane fade">
+                            <ol>
+                                {{#each guests}}
+                                <li> {{this.firstname}} {{this.lastname}} </li>
+                                {{/each}}
+                            </ol>
+                        </div>
+                    </div>  
+                </div>
+            </div>
+            <div class="col-xs-4 col-xs-offset-1">
+                <div class="row">
+                    <div class="jumbotron">
+                        <h3> Invite people to this trip! </h3>
+                        <form id="AddInvite">
+                            <div class="form-group">
+                            <label for="email"><h4>Email:</h4></label>
+                            <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+                            </div>
+                            <button id="InviteButton" class="btn btn-primary btn-md">Invite</button>
+                            <div id="EmailMessage"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr class="warning">
+                        <th> Item name </th>
+                        <th> Total Quantity </th>
+                        <th> Price </th>
+                        <th> Quantity Still Needed </th>                        
+                        <th> Contribute </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each items}}
+                    <tr>
+                        <th> {{this.item_name}} </th>
+                        <th> {{this.quantity_needed}} </th>
+                        <th> {{this.price}} </th> 
+                        <th> -- </th>                                                  
+                        <th> <button data-item="{{this.id}}" class="btn-warning btn-xs">I'll Bring This!</button> </th>                        
+                    </tr>
+                    {{/each}}                                                                                             
+                </tbody>       
+            </table>   
+        </div>
+        <div class="row">
+            <h3> Add an item for this trip </h3>
+            <hr>
+            <form class="form-inline">
+                <div class="form-group">
+                <label for="item_name"><h4>Item name:</h4></label>
+                <input type="text" class="form-control" id="item_name" placeholder="e.g. Case of water" name="item_name">
+                </div>
+                <div class="form-group">
+                <label for="quantity"><h4>Quantity</h4></label>
+                <input type="number" min="1" class="form-control" id="quantity" placeholder="5" name="quantity">
+                </div>      
+                <div class="form-group">
+                <label for="price"><h4>Price($)(Optional)</h4></label>
+                <input type="number" min="0" step=".01" class="form-control" id="price"  name="price">
+                </div>                                   
+                <button type="submit" class="btn btn-primary btn-md">Submit</button>
+                <div id="EmailMessage"></div>
+            </form>
+        </div>
+    </div> --}}
 
     <hr>
     <!-- Footer -->
@@ -93,23 +288,24 @@
                
                     <p class="copyright text-muted">&copy; 2017 <a href="#">FundR</a>
                         We <i class="fa fa-heart"></i> <a href="#">FundR</a></p>
-                </div>
             </div>
         </div>
     </footer>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+    <!-- jQuery -->
+    {{!-- <script src="/js/jquery.js"></script> --}}
+
+    {{!-- <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script> --}}
 
     <!-- Custom Theme JavaScript -->
-    <script src="js/small-business.min.js"></script>
+    {{!-- <script src="/js/small-business.min.js"></script> --}}
 
     <!-- Smooth Scroll -->
-    <script src="js/SmoothScroll.js"></script>
-
+    <script src="/js/SmoothScroll.js"></script>
+    
+    <script src="/js/tripview.js"></script>
 </body>
 
 </html>

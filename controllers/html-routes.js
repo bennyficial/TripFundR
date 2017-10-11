@@ -1,21 +1,42 @@
 var db = require("../models");
 module.exports = function(app, passport) {
-
-        app.get('/profile/api/user/:user_id', (req,res) => {
-            var user_id = req.params.user_id;
-            db.Users.findOne({
-                where: {id:user_id}
-            }).then(dbUser => {
-                console.log(dbUser);
-                dbUser.getTrips().then(dbTripUser => {
-                    console.log(dbTripUser);
-                    var returnData = {
-                        trips : dbTripUser
-                    }
-                    res.render('profile',returnData)
-                })
-            })       
+    // USER PROFILES DISPLAY CURRENT TRIPS
+    app.get('/profile/api/user/', (req,res) => {
+        console.log("=======================")        
+        console.log(req.user);
+        console.log("=======================")        
+        req.user.getTrips().then(dbTripUser => {
+            console.log(dbTripUser);
+            var returnData = {
+                trips : dbTripUser
+            }
+            res.render('profile',returnData)
         })
+    })  
+    
+
+
+    // TRIPS DISPLAY TRIP INFORMATION AND INVENTORY
+    app.get('/api/trip/:trip_id', function(req,res){
+        var trip_id = req.params.trip_id;
+        db.Trip.findOne({
+            where: {id:trip_id}
+        }).then(dbTrip => {
+            console.log(dbTrip);
+            dbTrip.getItems().then(dbTripInventory => {
+                console.log(dbTripInventory);
+                dbTrip.getUsers().then(dbUsers => {
+                    console.log(dbUsers)
+                    var returnData = {
+                        tripInfo: dbTrip,
+                        items: dbTripInventory,
+                        guests: dbUsers
+                    };
+                    res.render("tripview", returnData);
+                })
+            })
+        })
+    })
     
     
     app.get ("/", function(req, res) {
@@ -30,9 +51,6 @@ module.exports = function(app, passport) {
     });
     app.get("/create", function(req, res) {
         res.render("create");
-    });
-    app.get("/tripview", function(req, res) {
-        res.render("tripview")
     });
     app.get("/signup", function (req, res) {
         res.render("signup");
