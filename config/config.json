@@ -1,8 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "root",
-    "port": "3306",
+    "password": "Alters88",
     "database": "fundr",
     "host": "localhost",
     "dialect": "mysql"

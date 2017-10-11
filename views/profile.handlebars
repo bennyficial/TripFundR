@@ -82,15 +82,46 @@
 
 			<br>
 			<h2>Your FundR trips</h2>
-            {{#each trips}}
-                <th scope="row">{{this.title}} </th>
-			    <td>
-			        {{this.destination}}
-                    {{this.quantity_needed}}
-                    {{this.date}}								
-	           </td>
-			   {{/each}}
-			{{!-- <ul>
+            <table class="table table-condensed table-striped">
+                <thead>
+                    <tr class="warning">
+                        <th> Trip Title</th>
+                        <th> Date </th>
+                        <th> Destination </th>                     
+                        <th> View Trip </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each trips}}
+                    <tr>
+                        <td> {{this.title}} </td>
+                        <td> {{this.date}} </td>
+                        <td> {{this.destination}} </td> 
+                                                                  
+                        <td><a href ="/api/trip/{{this.id}}"> <button data-item="{{this.id}}" class="btn-warning btn-xs">View</button></a> </td>                        
+                    </tr>
+                    {{/each}}                                                                                             
+                </tbody>       
+            </table>  
+            {{!-- <div class="row">
+                {{#each trips}}
+                <div class="col-sm-4">
+                <a href ="/api/trip/{{this.id}}">  
+                    <div id = "w3ll" class = "well" > 
+                        <ul>
+                        <li style = " list-style-type: none">Trip Title: {{this.title}} </li>	
+                        <li style = " list-style-type: none">Date: {{this.date}}</li>      
+                        <li style = " list-style-type: none">Destinationn: {{this.destination}}  </li>                   
+                        </ul>
+                    </div> 
+                </a> 
+                </div>
+                {{/each}}
+            </div> --}}
+
+			
+            {{!-- <ul>
 			  {{#each trips}}
 			    <li>
 			        {{this.title}}
