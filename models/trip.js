@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
       },
       createdBy: {
           type: DataTypes.STRING,
-          allowNull: false
       },
       destination: {
           type: DataTypes.STRING,
