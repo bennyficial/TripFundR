@@ -40,8 +40,11 @@ module.exports = function(app, passport) {
     
     
     app.get ("/", function(req, res) {
+        // connect-flash sends an array of messages
+        res.render("intro", {error: req.flash("error")[0]});
+    });
+    app.get ("/intro", function(req, res) {
         res.render("intro");
-        //res.render("welcome")
     });
     app.get ("/index", isLoggedIn, function (req, res) {
         res.render("index");
@@ -53,10 +56,7 @@ module.exports = function(app, passport) {
         res.render("create");
     });
     app.get("/signup", function (req, res) {
-        res.render("signup");
-    });
-    app.get("/signin", function (req, res) {
-        res.render("signin");
+        res.render("signup", {error: req.flash("error")[0]});
     });
     app.get('/logout', function (req, res) {
         req.session.destroy(function (err) {
@@ -67,13 +67,15 @@ module.exports = function(app, passport) {
 
     app.post("/signup", passport.authenticate("local-signup", {
             successRedirect: "/index",
-            failureRedirect: "/signup"
+            failureRedirect: "/signup",
+            failureFlash:true
         }
     ));
 
     app.post("/signin", passport.authenticate("local-signin", {
             successRedirect: "/index",
-            failureRedirect: "/signin"
+            failureRedirect: "/",
+            failureFlash:true
         }
     ));
 
@@ -83,6 +85,6 @@ module.exports = function(app, passport) {
         if(req.isAuthenticated()){
             return next();
         }
-        res.redirect("/signin");
+        res.redirect("/");
     }
 }

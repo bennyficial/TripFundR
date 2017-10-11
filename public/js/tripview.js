@@ -1,5 +1,6 @@
 $(document).ready(function(){
     $("#InviteButton").on("click",handleInviteForm);
+    $("#Add")
 
 
 
@@ -7,8 +8,9 @@ $(document).ready(function(){
 
     function handleInviteForm(event){
         event.preventDefault();
-        console.log("this works");
+        console.log("this");
         var emailInput = $("#email").val().trim()
+        console.log(emailInput);
         if (!emailInput){
             return
         } else{
@@ -17,7 +19,12 @@ $(document).ready(function(){
             var urlSplit = url.split("/")
             var tripId = urlSplit[urlSplit.length - 1];
             $.post("/api/trip/addtrip/" + tripId,requestData, function(res){
-                $("#EmailMessage").text("User added to invite list");
+                console.log(res);
+                if(res.error){
+                    $("#EmailMessage").text(res.message)
+                } else{
+                    $("#EmailMessage").text("User added to invite list");    
+                }
             })        
         }
         
