@@ -26,18 +26,19 @@
                             <a href="#" class="navbar-brand">FundR</a>
                         </div>
                         <div class="collapse navbar-collapse navbar-right" id="mynavbar">
-                            {{!-- <ul class="nav navbar-nav">
-                                <li class="active"><a href="#header">Home</a></li>
-                                <li><a href="#feature">How it Works</a></li>
-                                <li><a href="http://localhost:8080/create">Create New Trip</a></li>
-                                <li><a href="http://localhost:8080/profile">Profile</a></li>
-                                <li><a href="#portfolio">Gallery</a></li>
-                                <li><a href="#contact">Contact</a></li>
-                            </ul> --}}
+                        
+
+                                {{!-- <form id="signin" name="signin" method="post" action="signin">
+        <label for="email">Email Address</label>
+        <input class="text" name="email" type="text" />
+        <label for="password">Password</label>
+        <input name="password" type="password" />
+        <input class="btn" type="submit" value="Sign In" />
+    </form> --}}
+ 
 
                             <ul class="nav navbar-nav navbar-right">
-                                <!-- <li><p id="LoginInstructions" class="navbar-text">Already have an account?</p></li> -->
-                            <li class="dropdown">
+                               
                               <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
                           <ul id="login-dp" class="dropdown-menu">
                             <li>
@@ -46,13 +47,12 @@
                                   <div id="signUpAlert" class="top text-center">
                                     Login Area
                                   </div>
-                                     <form class="form " role="form" id="login-nav">
+                                     <form method="post" action="signin" class="form " role="form" id="login-nav">
                                         <div class="form-group">
-                                           <input type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
+                                           <input name="email" type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
                                         </div>
                                         <div class="form-group">
-                                           <input type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
-                                            {{!-- <div class="help-block text-right loginForm"><a>Forget the password ?</a></div> --}}
+                                           <input name="password" type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
                                         </div>
                                         <div class="form-group">
                                            <button type="btnLogin" id="btnLogin" class="btn btn-primary btn-block">Log In</button>
@@ -80,24 +80,15 @@
                     <h3 class="title">FundR</h3>
                     <h4 class="sub-title">"Go Fund Yourself!"</h4>
                     <h2> Login or Sign-up to start using FundR </h2>
-                    {{!-- <button type="submit" class="btn btn-submit">START YOUR FundR</button> --}}
+                    {{#if error}}
+                        <br>
+                        <div class="alert alert-danger">{{error}}</div>
+                    {{/if}}
                 </div>
             </div>
         </div>
     </header>
-    <!--/ header-->
-    <!---->
-    {{!-- <section id="cta-1">
-        <div class="container">
-            <div class="row">
-                <div class="cta-info text-center">
-                    <h3><span class="dec-tec">“</span>Travel well by using FundR.<span class="dec-tec">”</span> - The Blue Team</h3>
-                </div>
-            </div>
-        </div>
-    </section> --}}
-    <!---->
-    <!---->
+    
     <section id="feature" class="section-padding">
         <div class="container">
             <div class="row">
@@ -197,7 +188,16 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/wow.js"></script>
     <script src="js/custom.js"></script>
-    <script src="js/contactform.js"></script>
+    {{!-- <script src="js/contactform.js"></script> --}}
+
+    <script type="text/javascript">
+        var btnSignUp = $("#btnSignUp");
+
+        btnSignUp.bind("click", function(event) {
+            event.preventDefault();
+            window.location.href = "http://localhost:8080/signup";
+        })
+    </script>
     
   </body>
 </html>

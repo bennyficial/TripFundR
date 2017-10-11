@@ -1,26 +1,50 @@
 var db = require("../models");
 module.exports = function(app, passport) {
-
-        app.get('/profile/api/user/:user_id', (req,res) => {
-            var user_id = req.params.user_id;
-            db.Users.findOne({
-                where: {id:user_id}
-            }).then(dbUser => {
-                console.log(dbUser);
-                dbUser.getTrips().then(dbTripUser => {
-                    console.log(dbTripUser);
-                    var returnData = {
-                        trips : dbTripUser
-                    }
-                    res.render('profile',returnData)
-                })
-            })       
+    // USER PROFILES DISPLAY CURRENT TRIPS
+    app.get('/profile/api/user/', (req,res) => {
+        console.log("=======================")        
+        console.log(req.user);
+        console.log("=======================")        
+        req.user.getTrips().then(dbTripUser => {
+            console.log(dbTripUser);
+            var returnData = {
+                trips : dbTripUser
+            }
+            res.render('profile',returnData)
         })
+    })  
+    
+
+
+    // TRIPS DISPLAY TRIP INFORMATION AND INVENTORY
+    app.get('/api/trip/:trip_id', function(req,res){
+        var trip_id = req.params.trip_id;
+        db.Trip.findOne({
+            where: {id:trip_id}
+        }).then(dbTrip => {
+            console.log(dbTrip);
+            dbTrip.getItems().then(dbTripInventory => {
+                console.log(dbTripInventory);
+                dbTrip.getUsers().then(dbUsers => {
+                    console.log(dbUsers)
+                    var returnData = {
+                        tripInfo: dbTrip,
+                        items: dbTripInventory,
+                        guests: dbUsers
+                    };
+                    res.render("tripview", returnData);
+                })
+            })
+        })
+    })
     
     
     app.get ("/", function(req, res) {
+        // connect-flash sends an array of messages
+        res.render("intro", {error: req.flash("error")[0]});
+    });
+    app.get ("/intro", function(req, res) {
         res.render("intro");
-        //res.render("welcome")
     });
     app.get ("/index", isLoggedIn, function (req, res) {
         res.render("index");
@@ -31,14 +55,8 @@ module.exports = function(app, passport) {
     app.get("/create", function(req, res) {
         res.render("create");
     });
-    app.get("/tripview", function(req, res) {
-        res.render("tripview")
-    });
     app.get("/signup", function (req, res) {
-        res.render("signup");
-    });
-    app.get("/signin", function (req, res) {
-        res.render("signin");
+        res.render("signup", {error: req.flash("error")[0]});
     });
     app.get('/logout', function (req, res) {
         req.session.destroy(function (err) {
@@ -49,13 +67,15 @@ module.exports = function(app, passport) {
 
     app.post("/signup", passport.authenticate("local-signup", {
             successRedirect: "/index",
-            failureRedirect: "/signup"
+            failureRedirect: "/signup",
+            failureFlash:true
         }
     ));
 
     app.post("/signin", passport.authenticate("local-signin", {
             successRedirect: "/index",
-            failureRedirect: "/signin"
+            failureRedirect: "/",
+            failureFlash:true
         }
     ));
 
@@ -65,6 +85,6 @@ module.exports = function(app, passport) {
         if(req.isAuthenticated()){
             return next();
         }
-        res.redirect("/signin");
+        res.redirect("/");
     }
 }

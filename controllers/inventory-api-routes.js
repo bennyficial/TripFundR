@@ -16,7 +16,7 @@ module.exports = function(app){
         })
     })
 
-    // GRABS INVENTORY ASSOCIATED WITH A SPECIFIC TRIP
+    // // GRABS INVENTORY ASSOCIATED WITH A SPECIFIC TRIP
     app.get('/api/trip/:trip_id', function(req,res){
         var trip_id = req.params.trip_id;
         db.Trip.findOne({
@@ -25,10 +25,12 @@ module.exports = function(app){
             console.log(dbTrip);
             dbTrip.getItems().then(dbTripInventory => {
                 console.log(dbTripInventory);
-                var new_array = [];
-                new_array.push(dbTrip)
-                new_array.push(dbTripInventory)
-                res.json(new_array);
+                var returnData = {
+                    tripInfo: dbTrip,
+                    items: dbTripInventory
+                };
+                res.render("tripview", returnData
+                );
             })
         })
     })

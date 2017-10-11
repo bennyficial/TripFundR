@@ -7,7 +7,18 @@ module.exports = function(app){
         var new_trip = req.body;
         console.log(new_trip);
         db.Trip.create(new_trip).then(data =>{
-            res.json(data);
+            var trip_id = data.id;
+            req.user.addTrip(data).then(
+                db.Trip.findOne({
+                    where: {id:trip_id}
+                }).then(dbTrip => {
+                    var returnData = {
+                        tripInfo: dbTrip
+                    };
+                    res.render("tripview",returnData);
+                })
+            )
+
         })
     })
 

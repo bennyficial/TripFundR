@@ -16,6 +16,7 @@
 
     <!-- Custom CSS -->
     <link href="/assets/css/table.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 
     <!-- Custom Fonts -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -29,7 +30,7 @@
     <!-- Navigation -->
     <nav class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
+            
             <div class="navbar-header page-scroll">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
@@ -40,7 +41,6 @@
                 <a class="navbar-brand" href="http://localhost:8080/home">FundR</a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
@@ -52,9 +52,6 @@
                     <li>
                         <a href="http://localhost:8080/profile">Profile</a>
                     </li>
-                    <!-- <li>
-                        <a href="tripview.html">Trip</a>
-                    </li> -->
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -63,7 +60,6 @@
     </nav>
 
     <!-- Page Header -->
-    <!-- Set your background image for this header on the line below. -->
     <header class="intro-header" style="background-image: url('/assets/img/vwvan.jpg')">
         <div class="container overlay">
             <div class="row">
@@ -86,8 +82,15 @@
 
 			<br>
 			<h2>Your FundR trips</h2>
-
-			<ul>
+            {{#each trips}}
+                <th scope="row">{{this.title}} </th>
+			    <td>
+			        {{this.destination}}
+                    {{this.quantity_needed}}
+                    {{this.date}}								
+	           </td>
+			   {{/each}}
+			{{!-- <ul>
 			  {{#each trips}}
 			    <li>
 			        {{this.title}}
@@ -95,7 +98,7 @@
                     {{this.date}}						
 	           </li>
 			   {{/each}}
-			</ul>
+			</ul> --}}
 
 	    </div>
         </div>
@@ -125,10 +128,12 @@
     <script src="js/bootstrap.min.js"></script>
 
     <!-- Custom Theme JavaScript -->
-    {{!-- <script src="js/small-business.min.js"></script> --}}
+    <script src="js/small-business.min.js"></script>
 
     <!-- Smooth Scroll -->
     <script src="js/SmoothScroll.js"></script>
+
+     <script src="js/wow.js"></script>
 
     {{!-- <script src="js/trip.js" type="text/javascript"></script> --}}
 

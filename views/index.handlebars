@@ -33,40 +33,8 @@
                                 <li><a href="http://localhost:8080/profile">Profile</a></li>
                                 <li><a href="#portfolio">Gallery</a></li>
                                 <li><a href="#contact">Contact</a></li>
+                                <li><a href="http://localhost:8080/logout"><b>Logout</b></a></li>
                             </ul>
-
-                            <ul class="nav navbar-nav navbar-right">
-                                <!-- <li><p id="LoginInstructions" class="navbar-text">Already have an account?</p></li> -->
-                            <li class="dropdown">
-                              <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
-                          <ul id="login-dp" class="dropdown-menu">
-                            <li>
-                               <div class="row">
-                                  <div class="col-md-12">
-                                  <div id="signUpAlert" class="top text-center">
-                                    Login Area
-                                  </div>
-                                     <form class="form " role="form" id="login-nav">
-                                        <div class="form-group">
-                                           <input type="email" class="form-control loginForm" id="txtEmail" placeholder="Email address" required>
-                                        </div>
-                                        <div class="form-group">
-                                           <input type="password" class="form-control loginForm" id="txtPassword" placeholder="Password" required>
-                                        </div>
-                                        <div class="form-group">
-                                           <button type="btnLogin" id="btnLogin" class="btn btn-primary btn-block">Log In</button>
-                                           <button type="btnLogOut" id="btnLogOut" class="btn btn-warning btn-block hide">Log Out</button> 
-                                        </div>
-                                     </form>
-                                  </div>
-                                  <div class="bottom text-center loginForm">
-                                    New here ? <button id="btnSignUp" class="btn btn-sm btn-success">Sign Up</button> 
-                                  </div>
-                               </div>
-                            </li>
-                          </ul>
-                            </li>
-                          </ul>
                         </div>
                     </div>
                 </div>
@@ -220,7 +188,7 @@
                         <div id="sendmessage">Your message has been sent. Thank you!</div>
                         <div id="errormessage"></div>
                         <div class="contact-info">
-                            <form action="" method="post" role="form" class="contactForm">
+                            <form action="/api/contact/new" method="post" role="form" class="contactForm">
                                 <div class="form-group">
                                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
                                     <div class="validation"></div>
@@ -236,7 +204,7 @@
                                 </div>
                                 
                                 <div class="form-group">
-                                    <textarea class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                    <input type="text" class="form-control" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></input>
                                     <div class="validation"></div>
                                 </div>
                                 <button type="submit" class="btn btn-send">Send</button>
@@ -293,6 +261,6 @@
     <script src="/js/wow.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/contactform/contactform.js"></script>
-    
+
   </body>
 </html>

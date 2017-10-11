@@ -9,6 +9,7 @@ var bodyParser = require("body-parser");
 var passport   = require('passport');
 var session    = require('express-session');
 var env = require('dotenv').load();
+var flash = require("connect-flash");
 
 // Sets up the Express App
 // =============================================================
@@ -35,6 +36,9 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 // Static directory
 app.use(express.static("public"));
 
+// Flash
+app.use(flash());
+
 // For Passport
 app.use(session({ secret: 'keyboard cat',resave: true, saveUninitialized:true})); // session secret
 app.use(passport.initialize());
@@ -49,6 +53,7 @@ require("./controllers/html-routes.js")(app, passport);
 require("./controllers/trip-api-routes.js")(app, passport);
 require("./controllers/users-api-routes.js")(app, passport);
 require("./controllers/inventory-api-routes.js")(app, passport);
+require("./controllers/contacts-api-routes.js")(app, passport);
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
