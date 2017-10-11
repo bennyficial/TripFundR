@@ -2,6 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
+    "port":"8889",
     "database": "fundr",
     "host": "localhost",
     "dialect": "mysql"
@@ -14,10 +15,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
-    "host": "127.0.0.1",
+    "username": "nt7y2qg58v4ukf94",
+    "password": "ky8rg439gau4j5wj",
+    "database": "cvbm1963yj7dx3bj",
+    "host": "h40lg7qyub2umdvb.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   }
 }
