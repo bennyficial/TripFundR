@@ -5,16 +5,25 @@ Overall purpose is a web app designed to help organize and plan trips by setting
 Set up web servers with Node.js using Express.
 
 ## Link to Page
-* **#**
+* **https://limitless-eyrie-45922.herokuapp.com/**
+
+## FundR Intro Page
+![Intro Page](public/assets/img/intro.png)
+
+## Sign-up Page
+![Sign-Up Page](public/assets/img/signup.png)
 
 ## Home Page
 ![FundR Home Page](public/assets/img/homepage.png)
 
-## FundR Profile Page
-![New Trip Page](public/assets/img/profile.png)
-
 ## FundR Trip Page
 ![New Trip Page](public/assets/img/tripview.png)
+
+## FundR Profile Page
+![Profile Page](public/assets/img/profile.png)
+
+## FundR Create Trip Page
+![New Trip Page](public/assets/img/viewtrip.png)
 
 
 ## Technologies Used
