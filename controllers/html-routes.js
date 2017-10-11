@@ -2,11 +2,7 @@ var db = require("../models");
 module.exports = function(app, passport) {
     // USER PROFILES DISPLAY CURRENT TRIPS
     app.get('/profile/api/user/', (req,res) => {
-        console.log("=======================")        
-        console.log(req.user);
-        console.log("=======================")        
         req.user.getTrips().then(dbTripUser => {
-            console.log(dbTripUser);
             var returnData = {
                 trips : dbTripUser
             }
@@ -22,11 +18,8 @@ module.exports = function(app, passport) {
         db.Trip.findOne({
             where: {id:trip_id}
         }).then(dbTrip => {
-            console.log(dbTrip);
             dbTrip.getItems().then(dbTripInventory => {
-                console.log(dbTripInventory);
                 dbTrip.getUsers().then(dbUsers => {
-                    console.log(dbUsers)
                     var returnData = {
                         tripInfo: dbTrip,
                         items: dbTripInventory,

@@ -7,9 +7,6 @@ module.exports = function(app){
         var new_item = req.body;
         var trip_id = req.params.trip_id;
         var redirectUrl = "/api/trip/" + trip_id;
-        console.log("=========================== inventory api =========================");
-        console.log(new_item);
-        console.log(trip_id);
         db.Inventory.create(new_item).then(dbItem => {
             db.Trip.findOne({
                 where : {id:trip_id}
@@ -29,9 +26,7 @@ module.exports = function(app){
         db.Trip.findOne({
             where: {id:trip_id}
         }).then(dbTrip => {
-            console.log(dbTrip);
             dbTrip.getItems().then(dbTripInventory => {
-                console.log(dbTripInventory);
                 var returnData = {
                     tripInfo: dbTrip,
                     items: dbTripInventory
@@ -45,9 +40,6 @@ module.exports = function(app){
     // UPDATE A SPECIFIC INVENTORY ITEM
     app.put('/api/trip/inventory/update/:inventory_id', function (req, res) {
         var itemId = req.params.inventory_id;
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
-        console.log(itemId);
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
         // concatenating creator's full name.
         var contributorFirstName = req.user.dataValues.firstname;
         var contributorLastName = req.user.dataValues.lastname;

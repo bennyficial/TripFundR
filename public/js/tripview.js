@@ -24,13 +24,7 @@ $(document).ready(function(){
 
     function handleBringButton (event) {
         event.preventDefault();
-        console.log("gg");
         var invId = $(this).attr("data-item");
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
-        console.log(invId);
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
-        console.log("========-=-=-=-=-=-=-=-=-=-=-=-=");
         $.ajax({
             url: "/api/trip/inventory/update/" + invId,
             method: 'PUT'
