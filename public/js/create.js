@@ -15,7 +15,7 @@ function handleCreateForm (event) {
             }
 
           }).done(function(res) {
-
+            
             var tripid = res.tripInfo.id;
         //    return res.redirect("/api/trip/" + tripid);
         location.replace("/api/trip/" + tripid)

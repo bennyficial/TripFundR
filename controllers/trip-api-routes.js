@@ -24,7 +24,7 @@ module.exports = function(app){
                         var returnData = {
                             tripInfo: newDbTrip
                         };
-                        res.render("tripview",returnData);
+                        res.json(returnData);
                     });
                 })
             )
