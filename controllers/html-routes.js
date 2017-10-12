@@ -1,7 +1,7 @@
 var db = require("../models");
 module.exports = function(app, passport) {
     // USER PROFILES DISPLAY CURRENT TRIPS
-    app.get('/profile', (req,res) => {
+    app.get('/profile', isLoggedIn, (req,res) => {
         req.user.getTrips().then(dbTripUser => {
             var returnData = {
                 trips : dbTripUser
@@ -43,7 +43,7 @@ module.exports = function(app, passport) {
     app.get ("/index", isLoggedIn, function (req, res) {
         res.render("index");
     });
-    app.get("/create", function(req, res) {
+    app.get("/create", isLoggedIn, function(req, res) {
         res.render("create");
     });
     app.get("/signup", function (req, res) {
