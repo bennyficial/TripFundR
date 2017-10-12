@@ -13,7 +13,7 @@ module.exports = function(app, passport) {
 
 
     // TRIPS DISPLAY TRIP INFORMATION AND INVENTORY
-    app.get('/api/trip/:trip_id', function(req,res){
+    app.get('/api/trip/:trip_id',isLoggedIn, function(req,res){
         var trip_id = req.params.trip_id;
         db.Trip.findOne({
             where: {id:trip_id}
