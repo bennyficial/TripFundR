@@ -22,9 +22,9 @@
     <link rel="stylesheet" type="text/css" href="assets/css/animate.css">
 
     <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Great+Vibes' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900' rel='stylesheet' type='text/css'>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -59,9 +59,8 @@
                     <li>
                         <a href="/profile/">Profile</a>
                     </li>
-                    <li>
-                        <a href="/logout"><b>Logout</b></a>
-                    </li>
+                    <li><a href="/logout"><b>Logout</b></a></li>
+                
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -109,7 +108,7 @@
                             <li><a data-toggle="tab" href="#Invite">Guests</a></li>
                         </ul>  
                         <div class="tab-content">
-                            <div id="Description" class="tab-pane fade in active">
+                            <div id="Description" class="tab-pane fade in active" style="overflow:auto; max-height:100px">
                                 {{tripInfo.description}}
                             </div>
                             <div id="Invite" class="tab-pane fade">
@@ -162,7 +161,7 @@
                         <td> {{this.quantity_needed}} </td>
                         <td> {{this.price}} </td>
                         {{#if this.isDone}}
-                            <td><i class="fa fa-thumbs-o-up fa-lg" aria-hidden="true"></i> {{this.contributorName}}</td>
+                            <td><i class="fa fa-thumbs-o-up"></i> {{this.contributorName}}</td>
                         {{else}}
                             <td> <button data-item="{{this.id}}" class="btn-warning btn-xs" id="bringButton">I'll Bring This!</button> </td>
                         {{/if}}
@@ -205,14 +204,14 @@
     </footer>
 
 
-    <!-- jQuery -->
-    {{!-- <script src="/js/jquery.js"></script> --}}
+    {{!-- <!-- jQuery -->
+    <script src="/js/jquery.js"></script> 
 
-    {{!-- <!-- Bootstrap Core JavaScript -->
-    <script src="/js/bootstrap.min.js"></script> --}}
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/js/bootstrap.min.js"></script> 
 
     <!-- Custom Theme JavaScript -->
-    {{!-- <script src="/js/small-business.min.js"></script> --}}
+    <script src="/js/small-business.min.js"></script> --}}
 
     <!-- Smooth Scroll -->
     <script src="/js/SmoothScroll.js"></script>
