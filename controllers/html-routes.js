@@ -13,23 +13,34 @@ module.exports = function(app, passport) {
 
 
     // TRIPS DISPLAY TRIP INFORMATION AND INVENTORY
-    app.get('/api/trip/:trip_id',isLoggedIn, function(req,res){
-        var trip_id = req.params.trip_id;
-        db.Trip.findOne({
+    app.get('/api/trip/:trip_id', isLoggedIn, function(req,res){
+        var trip_id = req.params.trip_id
+        // CHECK IF USER IS ASSOCIATED WITH TRIP_ID IN URL
+        req.user.getTrips({
             where: {id:trip_id}
-        }).then(dbTrip => {
-            dbTrip.getItems().then(dbTripInventory => {
-                dbTrip.getUsers().then(dbUsers => {
-                    var returnData = {
-                        tripInfo: dbTrip,
-                        items: dbTripInventory,
-                        guests: dbUsers
-                    };
-                    res.render("tripview", returnData);
-                })
-            })
+        }).then(dbAssociations => {
+            // EMPTY RETURN ARRAY MEANS USER NOT ASSOCIATED WITH TRIP
+            if (dbAssociations.length === 0){
+                res.send("Error: Access Denied")
+            } else{
+                db.Trip.findOne({
+                    where: {id:trip_id}
+                }).then(dbTrip => {
+                    dbTrip.getItems().then(dbTripInventory => {
+                        dbTrip.getUsers().then(dbUsers => {
+                            var returnData = {
+                                tripInfo: dbTrip,
+                                items: dbTripInventory,
+                                guests: dbUsers
+                            };
+                            res.render("tripview", returnData);
+                        })
+                    })
+                })                 
+            }
         })
-    })
+    })  
+    
 
     
     
